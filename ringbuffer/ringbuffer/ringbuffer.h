@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "arrayptr.h"
 #include <algorithm>
@@ -47,7 +47,7 @@ public:
 	void push_back(const T& value)
 	{
 		if (size_ == capacity_) {
-			// Если буфер заполнен, удаляем первый элемент
+			// Р•СЃР»Рё Р±СѓС„РµСЂ Р·Р°РїРѕР»РЅРµРЅ, СѓРґР°Р»СЏРµРј РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚
 			for (size_t i = 0; i < size_ - 1; ++i) {
 				value_[i] = value_[i + 1];
 			}
@@ -55,17 +55,17 @@ public:
 			return;
 		}
 
-		// Добавляем новый элемент в конец
+		// Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС†
 		value_[size_] = value;
 
-		// Увеличиваем размер
+		// РЈРІРµР»РёС‡РёРІР°РµРј СЂР°Р·РјРµСЂ
 		++size_;
 	}
 
 	void push_front(const T& value)
 	{
 		if (size_ == capacity_) {
-			// Если буфер заполнен, удаляем последний элемент
+			// Р•СЃР»Рё Р±СѓС„РµСЂ Р·Р°РїРѕР»РЅРµРЅ, СѓРґР°Р»СЏРµРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚
 			for (size_t i = size_ - 1; i > 0; --i) {
 				value_[i] = value_[i - 1];
 			}
@@ -73,7 +73,7 @@ public:
 			return;
 		}
 
-		// Сдвигаем все элементы вправо
+		// РЎРґРІРёРіР°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РІРїСЂР°РІРѕ
 		for (size_t i = size_; i > 0; --i) {
 			value_[i] = value_[i - 1];
 		}
@@ -86,23 +86,23 @@ public:
 	void pop_back()
 	{
 		if (size_ == 0) {
-			throw std::underflow_error("Удалены все элементы");
+			throw std::underflow_error("РЈРґР°Р»РµРЅС‹ РІСЃРµ СЌР»РµРјРµРЅС‚С‹");
 		}
+
 		--size_;
 	}
 
 	void pop_front()
 	{
 		if (size_ == 0) {
-			throw std::underflow_error("Удалены все элементы");
+			throw std::underflow_error("РЈРґР°Р»РµРЅС‹ РІСЃРµ СЌР»РµРјРµРЅС‚С‹");
 		}
 
-		// Сдвигаем все элементы на один влево
+		// РЎРґРІРёРіР°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РЅР° РѕРґРёРЅ РІР»РµРІРѕ
 		for (size_t i = 0; i < size_ - 1; ++i) {
 			value_[i] = value_[i + 1];
 		}
 
-		// Уменьшаем размер буфера
 		--size_;
 	}
 
@@ -111,13 +111,16 @@ public:
 			return;
 		}
 
+		// РЎРѕР·РґР°С‘Рј СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° СЃ РЅРѕРІС‹Рј СЂР°Р·РјРµСЂРѕРј
 		ArrayPtr<T> new_buffer(new_size);
 
+		// Р’С‹Р±РёСЂР°РµРј РЅР°РёРјРµРЅСЊС€РёР№ СЂР°Р·РјРµСЂ
 		size_t elements_to_copy = std::min(size_, new_size);
 		for (size_t i = 0; i < elements_to_copy; ++i) {
 			new_buffer[i] = value_[i];
 		}
 
+		// Р•СЃР»Рё РЅРѕРІС‹Р№ СЂР°Р·РјРµСЂ Р±РѕР»СЊС€Рµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РѕР±РЅСѓР»СЏРµРј РЅРѕРІС‹Рµ РїСѓСЃС‚С‹Рµ СЌР»РµРјРµРЅС‚С‹
 		if (new_size > size_) {
 			for (size_t i = elements_to_copy; i < new_size; ++i) {
 				new_buffer[i] = T{};
