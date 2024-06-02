@@ -3,7 +3,6 @@
 #include "arrayptr.h"
 #include <algorithm>
 #include <stdexcept>
-#include <utility>
 
 template <typename T>
 class ringbuffer
