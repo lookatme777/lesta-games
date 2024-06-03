@@ -23,7 +23,7 @@ bool isEven2(int value)
 <details>
 	<summary>MVSC</summary>
 
-```asm
+```MVSC
 bool isEven(int value)
 {
 00007FF681B31D20  mov         dword ptr [rsp+8],ecx  													
@@ -48,8 +48,8 @@ bool isEven(int value)
 00007FF681B31D67  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
-
-```asm
+<br></br>
+```MVSC
 bool isEven2(int value)
 {
 00007FF6A7D41810  mov         dword ptr [rsp+8],ecx  
@@ -71,6 +71,66 @@ bool isEven2(int value)
 00007FF6A7D41852  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
+
+<summary>GCC</summary>
+
+```gcc 14.1
+asm
+isEven2(int):
+        push    rbp
+        mov     rbp, rsp
+        mov     DWORD PTR [rbp-4], edi
+        mov     eax, DWORD PTR [rbp-4]
+        and     eax, 1
+        test    eax, eax
+        sete    al
+        pop     rbp
+        ret
+
+isEven(int):
+        push    rbp
+        mov     rbp, rsp
+        mov     DWORD PTR [rbp-4], edi
+        mov     eax, DWORD PTR [rbp-4]
+        and     eax, 1
+        test    eax, eax
+        sete    al
+        pop     rbp
+        ret
+```
+
+<summary>CLANG</summary>
+
+```clang 18.1.0
+asm
+isEven2(int):                            # @isEven2(int)
+        push    rbp
+        mov     rbp, rsp
+        mov     dword ptr [rbp - 4], edi
+        mov     eax, dword ptr [rbp - 4]
+        and     eax, 1
+        cmp     eax, 0
+        sete    al
+        and     al, 1
+        movzx   eax, al
+        pop     rbp
+        ret
+isEven(int):                             # @isEven(int)
+        push    rbp
+        mov     rbp, rsp
+        mov     dword ptr [rbp - 4], edi
+        mov     eax, dword ptr [rbp - 4]
+        mov     ecx, 2
+        cdq
+        idiv    ecx
+        cmp     edx, 0
+        sete    al
+        and     al, 1
+        movzx   eax, al
+        pop     rbp
+        ret
+```
+
 </details>
 
 
