@@ -71,9 +71,12 @@ bool isEven2(int value)
 00007FF6A7D41852  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
+</details>
 
+
+<details>
 <summary>GCC</summary>
-
+	
 ```gcc 14.1
 asm
 isEven2(int):
@@ -98,7 +101,9 @@ isEven(int):
         pop     rbp
         ret
 ```
+</details>
 
+<details>
 <summary>CLANG</summary>
 
 ```clang 18.1.0
