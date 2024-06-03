@@ -7,7 +7,7 @@ C/C++ example:
 ```cpp
 bool isEven(int value)
 {
-	return value%2==0;
+	return value % 2 == 0;
 }
 ```
 
