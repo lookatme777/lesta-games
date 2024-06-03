@@ -22,8 +22,8 @@ bool isEven2(int value)
 
 <details>
 	<summary>MVSC</summary>
-
-```MVSC
+	
+```asm
 bool isEven(int value)
 {
 00007FF681B31D20  mov         dword ptr [rsp+8],ecx  													
@@ -48,7 +48,7 @@ bool isEven(int value)
 00007FF681B31D67  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
-<br></br>
+
 ```MVSC
 bool isEven2(int value)
 {
@@ -77,8 +77,7 @@ bool isEven2(int value)
 <details>
 <summary>GCC</summary>
 	
-```gcc 14.1
-asm
+```asm
 isEven2(int):
         push    rbp
         mov     rbp, rsp
@@ -106,8 +105,7 @@ isEven(int):
 <details>
 <summary>CLANG</summary>
 
-```clang 18.1.0
-asm
+```asm
 isEven2(int):                            # @isEven2(int)
         push    rbp
         mov     rbp, rsp
@@ -135,7 +133,6 @@ isEven(int):                             # @isEven(int)
         pop     rbp
         ret
 ```
-
 </details>
 
 
