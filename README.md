@@ -17,7 +17,7 @@ bool isEven(int value)
 
 ```
 
-<br>
+<br></br>
 ## Задание №2
 
 
