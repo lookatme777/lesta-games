@@ -47,9 +47,7 @@ bool isEven(int value)
 00007FF681B31D5D  mov         dword ptr [rbp+0C0h],0  
 00007FF681B31D67  movzx       eax,byte ptr [rbp+0C0h]  
 }
-```
 
-```MVSC
 bool isEven2(int value)
 {
 00007FF6A7D41810  mov         dword ptr [rsp+8],ecx  
@@ -118,6 +116,7 @@ isEven2(int):                            # @isEven2(int)
         movzx   eax, al
         pop     rbp
         ret
+
 isEven(int):                             # @isEven(int)
         push    rbp
         mov     rbp, rsp
