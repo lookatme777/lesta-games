@@ -20,12 +20,11 @@ bool isEven2(int value)
 }
 ```
 
-| CODE | MVSC | **GCC 14.1** | **CLANG 18.1.0** |
-|------|------|--------------|------------------|
-| return value%2 == 0; | ```asm
+**MVSC**
+```asm
 bool isEven(int value)
 {
-00007FF681B31D20  mov         dword ptr [rsp+8],ecx  
+00007FF681B31D20  mov         dword ptr [rsp+8],ecx  													
 00007FF681B31D24  push        rbp  
 00007FF681B31D25  push        rdi  
 00007FF681B31D26  sub         rsp,0F8h  
@@ -47,7 +46,29 @@ bool isEven(int value)
 00007FF681B31D67  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
-| return (value&1) == 0; |
+
+```asm
+bool isEven2(int value)
+{
+00007FF6A7D41810  mov         dword ptr [rsp+8],ecx  
+00007FF6A7D41814  push        rbp  
+00007FF6A7D41815  push        rdi  
+00007FF6A7D41816  sub         rsp,0F8h  
+00007FF6A7D4181D  lea         rbp,[rsp+20h]  
+00007FF6A7D41822  lea         rcx,[__A573B7E6_main@cpp (07FF6A7D5206Ah)]  
+00007FF6A7D41829  call        __CheckForDebuggerJustMyCode (07FF6A7D41366h)  
+00007FF6A7D4182E  nop  
+  return (value & 1) == 0;
+00007FF6A7D4182F  mov         eax,dword ptr [value]  
+00007FF6A7D41835  and         eax,1  
+00007FF6A7D41838  test        eax,eax  
+00007FF6A7D4183A  jne         isEven2+38h (07FF6A7D41848h)  
+00007FF6A7D4183C  mov         dword ptr [rbp+0C0h],1  
+00007FF6A7D41846  jmp         isEven2+42h (07FF6A7D41852h)  
+00007FF6A7D41848  mov         dword ptr [rbp+0C0h],0  
+00007FF6A7D41852  movzx       eax,byte ptr [rbp+0C0h]  
+}
+```
 
 
 
