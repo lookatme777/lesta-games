@@ -21,8 +21,9 @@ bool isEven2(int value)
 ```
 
 <details>
-	<summary>**MVSC**</summary>
-	```asm
+	<summary>MVSC</summary>
+
+```asm
 bool isEven(int value)
 {
 00007FF681B31D20  mov         dword ptr [rsp+8],ecx  													
