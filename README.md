@@ -20,8 +20,9 @@ bool isEven2(int value)
 }
 ```
 
-**MVSC**
-```asm
+<details>
+	<summary>**MVSC**</summary>
+	```asm
 bool isEven(int value)
 {
 00007FF681B31D20  mov         dword ptr [rsp+8],ecx  													
@@ -69,6 +70,8 @@ bool isEven2(int value)
 00007FF6A7D41852  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
+</details>
+
 
 
 
