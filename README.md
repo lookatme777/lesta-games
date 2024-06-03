@@ -22,11 +22,7 @@ bool isEven2(int value)
 
 | CODE | MVSC | **GCC 14.1** | **CLANG 18.1.0** |
 |------|------|--------------|------------------|
-| return value%2 == 0; |
-| return (value&1) == 0; |
-
-
-```asm
+| return value%2 == 0; | ```asm
 bool isEven(int value)
 {
 00007FF681B31D20  mov         dword ptr [rsp+8],ecx  
@@ -51,6 +47,10 @@ bool isEven(int value)
 00007FF681B31D67  movzx       eax,byte ptr [rbp+0C0h]  
 }
 ```
+| return (value&1) == 0; |
+
+
+
 
 
 <br></br>
