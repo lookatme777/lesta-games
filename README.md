@@ -20,6 +20,12 @@ bool isEven2(int value)
 }
 ```
 
+| CODE | MVSC | **GCC 14.1** | **CLANG 18.1.0** |
+|------|------|--------------|------------------|
+| return value%2 == 0; |
+| return (value&1) == 0; |
+
+
 ```asm
 bool isEven(int value)
 {
